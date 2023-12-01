@@ -13,7 +13,7 @@
 - Posílání upozornění na nadcházející události.
 
 ## ER Diagram
-ER_diagram.png
+![ER Diagram](ER_diagram.png)
 
 # Charakteristika Funkčností Aplikace
 
