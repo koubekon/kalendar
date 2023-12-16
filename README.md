@@ -23,6 +23,9 @@
 ## Integrace s Jinými Kalendáři
 - Možnost importovat události z jiných kalendářových služeb.
 
+## Uložení rozpracované události
+- Po načtení stránky se neztratí data.
+
 # Specifikace Uživatelských Rolí a Oprávnění
 
 ## Správce
