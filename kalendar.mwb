@@ -1,0 +1,71 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema kalendar
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema kalendar
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `kalendar` DEFAULT CHARACTER SET utf8 ;
+USE `kalendar` ;
+
+-- -----------------------------------------------------
+-- Table `kalendar`.`uzivatele`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `kalendar`.`uzivatele` (
+  `iduzivatele` INT NOT NULL,
+  `login` VARCHAR(45) NOT NULL,
+  `Jmeno` VARCHAR(255) NOT NULL,
+  `Prijmeni` VARCHAR(255) NOT NULL,
+  `heslo` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`iduzivatele`),
+  UNIQUE INDEX `login_UNIQUE` (`login` ASC),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `kalendar`.`udalost`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `kalendar`.`udalost` (
+  `idudalost` INT NOT NULL,
+  `Nazev` VARCHAR(45) NOT NULL,
+  `zacatek` DATETIME NOT NULL,
+  `konec` DATETIME NOT NULL,
+  `popis` LONGTEXT NULL,
+  PRIMARY KEY (`idudalost`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `kalendar`.`uzivatele_has_udalost`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `kalendar`.`uzivatele_has_udalost` (
+  `uzivatele_iduzivatele` INT NOT NULL,
+  `udalost_idudalost` INT NOT NULL,
+  PRIMARY KEY (`uzivatele_iduzivatele`, `udalost_idudalost`),
+  INDEX `fk_uzivatele_has_udalost_udalost1_idx` (`udalost_idudalost` ASC),
+  INDEX `fk_uzivatele_has_udalost_uzivatele_idx` (`uzivatele_iduzivatele` ASC),
+  CONSTRAINT `fk_uzivatele_has_udalost_uzivatele`
+    FOREIGN KEY (`uzivatele_iduzivatele`)
+    REFERENCES `kalendar`.`uzivatele` (`iduzivatele`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_uzivatele_has_udalost_udalost1`
+    FOREIGN KEY (`udalost_idudalost`)
+    REFERENCES `kalendar`.`udalost` (`idudalost`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

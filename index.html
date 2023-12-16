@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Kalendář</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Your custom styles go here -->
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>Kalendář Editor</h2>
+
+  <!-- Event Form -->
+  <form id="eventForm">
+    <div class="form-group">
+      <label for="eventName">Název události</label>
+      <input type="text" class="form-control" id="eventName" required>
+    </div>
+    <div class="form-group">
+      <label for="eventDescription">Popis události</label>
+      <textarea class="form-control" id="eventDescription" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="eventDate">Začátek události</label>
+      <input type="date" class="form-control" id="eventDate" required>
+      <input type="time" class="form-control" id="eventDate" required>
+    </div>
+    <div class="form-group">
+      <label for="eventEnd">Konec události</label>
+      <input type="date" class="form-control" id="eventEnd" required>
+      <input type="time" class="form-control" id="eventEnd" required>
+    </div>
+    <div class="form-group">
+      <label for="eventImage">Obrázek</label>
+      <input type="file" class="form-control-file" id="eventImage" accept="image/*">
+    
+    </div>
+    <button type="button" class="btn btn-primary" onclick="addEvent()">Přidat událost</button>
+  </form>
+
+  <hr>
+
+  <!-- Event List -->
+  <h3>Seznam událostí</h3>
+  <ul id="eventList" class="list-group">
+    <!-- Event items will be dynamically added here -->
+  </ul>
+
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Your custom JavaScript goes here -->
+<script>
+  // Add your JavaScript code here for handling events and storing data in web storage
+  function addEvent() {
+    // Implement event addition logic here
+  }
+</script>
+
+</body>
+</html>
